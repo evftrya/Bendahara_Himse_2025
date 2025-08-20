@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Pemberitahuan Pembayaran Kas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -267,7 +269,7 @@
 <body>
     <div class="container">
         <h2>Pemberitahuan Pembayaran Kas</h2>
-        <div class="info">
+        <!-- <div class="info">
             <div>
                 Sehubungan dengan rapat pada:
             </div>
@@ -284,13 +286,13 @@
         <div class="desc">
             Kami informasikan bahwa proses pembentukan kepanitiaan akan mempertimbangkan status pembayaran kas, terutama <strong>bagi yang masih memiliki tunggakan</strong>. Mekanisme pemilihan juga dapat menggunakan sistem <b>spin wheel</b>.
             <br><br> Bagi rekan-rekan yang namanya tercatat telat membayar kas, kami membuka kesempatan untuk segera melakukan pelunasan. Data keterlambatan pembayaran kas sudah dicatat sebelumnya dan dapat dilihat pada tabel di bawah.
-        </div>
+        </div> -->
 
-        <div class="note">
+        <!-- <div class="note">
             <b>Catatan:</b>
             <br>Bagi yang keterlambatannya lebih dari 4 minggu, <br> Hanya dan jika hanya kasnya yang dibayar sampai akhir Juli, maka keterlambatan akan dianggap 0 (nol). kesempatan ini hanya ada hingga Jumat 25 Juli 2025, jam 3 sore, setelah itu maka
             terlambat yg tertera akan tetap dihitung
-        </div>
+        </div> -->
 
         <div class="steps">
             <b>Cara Pembayaran:</b>
@@ -302,10 +304,10 @@
             </ol>
         </div>
 
-        <div class="desc">
+        <!-- <div class="desc">
             Mohon kerjasamanya agar proses rapat dan pembentukan kepanitiaan dapat berjalan lancar dan adil untuk semua.<br>
             <b>Terima kasih!</b>
-        </div>
+        </div> -->
 
         <div class="note">
             <b>Catatan:</b>
@@ -320,14 +322,14 @@
                         <th>Nama</th>
                         <th>Jabatan</th>
                         <th>NIM</th>
-                        <th>Tahun</th>
+                        <!-- <th>Tahun</th> -->
+                        <th>TAHUN</th>
                         <th>PIC</th>
                         <th>Pernah Dibayar</th>
-                        <th>Progress</th>
-                        <th>Telat (Minggu)</th>
                         <th>Nominal Telat</th>
-                        <th>Jika bayar hingga akhir bulan Juli</th>
-                        <th>Jika bayar hingga akhir bulan Agustus</th>
+                        <th>Telat (Minggu)</th>
+                        <!-- <th>Jika bayar hingga akhir bulan Juli</th> -->
+                        <!-- <th>Jika bayar hingga akhir bulan Agustus</th> -->
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -380,767 +382,7 @@
     </div>
     <script>
         // Data contoh, silakan replace dengan data lengkap jika mau (lihat instruksi sebelumnya)
-        const data = [{
-            "NAMA ANGGOTA": "Abdul Hakim Al Baihaqy",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201230031.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp10.000,00",
-            "TELAT (MINGGU)": "22",
-            "NOMINAL TELAT": 44000,
-            "PROGRESS": "██ 11%"
-        }, {
-            "NAMA ANGGOTA": "Adelia Nafiatul Farida",
-            "JABATAN": "Sekertaris 1",
-            "NIM": 1201220025.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp10.000,00",
-            "TELAT (MINGGU)": "22",
-            "NOMINAL TELAT": 44000,
-            "PROGRESS": "██ 11%"
-        }, {
-            "NAMA ANGGOTA": "Adyadma Renjiro",
-            "JABATAN": "Staf Muda Medikraf",
-            "NIM": 103082400013.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Ahmad Firnanda Setiawan",
-            "JABATAN": "Anggota Bistech",
-            "NIM": 1201230001.0,
-            "TAHUN": 2023,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp28.000,00",
-            "TELAT (MINGGU)": "13",
-            "NOMINAL TELAT": 26000,
-            "PROGRESS": "██████ 31%"
-        }, {
-            "NAMA ANGGOTA": "Ahmad Ivan Sahmura Soni",
-            "JABATAN": "Anggota Psdm",
-            "NIM": 1201230018.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp10.000,00",
-            "TELAT (MINGGU)": "22",
-            "NOMINAL TELAT": 44000,
-            "PROGRESS": "██ 11%"
-        }, {
-            "NAMA ANGGOTA": "Alif Akbar Ramadhan",
-            "JABATAN": "Staf Muda Bendahara",
-            "NIM": 103082400035.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp50.000,00",
-            "TELAT (MINGGU)": "2",
-            "NOMINAL TELAT": 4000,
-            "PROGRESS": "███████████ 56%"
-        }, {
-            "NAMA ANGGOTA": "Alif Gayuh Arimukti",
-            "JABATAN": "Anggota Bistech",
-            "NIM": 1201220017.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Alvian Novi Ramadhani",
-            "JABATAN": "Anggota Bistech",
-            "NIM": 1201230032.0,
-            "TAHUN": 2023,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Amelia Amanda",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": 103082400039.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Andriy Novan Rahman",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201220015.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Ariana Hechalina Ardiansyah",
-            "JABATAN": "Anggota Ristek",
-            "NIM": 1201230042.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp60.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "█████████████ 67%"
-        }, {
-            "NAMA ANGGOTA": "Aurel Adestira Salsabila",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": 103082400041.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Awan Dhani Wahono",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201220443.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Daffa Surya Ramadhan",
-            "JABATAN": "Staf Muda Hublu",
-            "NIM": 103082400047.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp34.000,00",
-            "TELAT (MINGGU)": "10",
-            "NOMINAL TELAT": 20000,
-            "PROGRESS": "████████ 38%"
-        }, {
-            "NAMA ANGGOTA": "Dandy Maulana Ainul Yaqin",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201222032.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "David Wahyu Herdyansyah",
-            "JABATAN": "Anggota Bistech",
-            "NIM": 1201230011.0,
-            "TAHUN": 2023,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp24.000,00",
-            "TELAT (MINGGU)": "15",
-            "NOMINAL TELAT": 30000,
-            "PROGRESS": "█████ 27%"
-        }, {
-            "NAMA ANGGOTA": "Deo Farady Santoso",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 120122047.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp36.000,00",
-            "TELAT (MINGGU)": "9",
-            "NOMINAL TELAT": 18000,
-            "PROGRESS": "████████ 40%"
-        }, {
-            "NAMA ANGGOTA": "Devan Ganicia Syah Pratama",
-            "JABATAN": "Anggota Psdm",
-            "NIM": 1201222009.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Dimas Dewa Ndaru Putra Widodo",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": 103082400038.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Dimas Iqbal Rizqulloh",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201230028.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp24.000,00",
-            "TELAT (MINGGU)": "15",
-            "NOMINAL TELAT": 30000,
-            "PROGRESS": "█████ 27%"
-        }, {
-            "NAMA ANGGOTA": "Dinda Maya Aprilia",
-            "JABATAN": "Wakil Koor Bistech",
-            "NIM": 1201220441.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Dita Ramadhani Tianto",
-            "JABATAN": "Sekertaris 2",
-            "NIM": 1201230040.0,
-            "TAHUN": 2023,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp28.000,00",
-            "TELAT (MINGGU)": "13",
-            "NOMINAL TELAT": 26000,
-            "PROGRESS": "██████ 31%"
-        }, {
-            "NAMA ANGGOTA": "Dito Aditya Nugroho",
-            "JABATAN": "Ketua ",
-            "NIM": 1201220037.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp90.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "████████████████████ 100%"
-        }, {
-            "NAMA ANGGOTA": "Dynasty Danna Gunawan",
-            "JABATAN": "Staf Muda Ristek",
-            "NIM": 103082400037.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp62.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "██████████████ 69%"
-        }, {
-            "NAMA ANGGOTA": "E A Yoga Wilanda",
-            "JABATAN": "Anggota Ristek",
-            "NIM": null,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp32.000,00",
-            "TELAT (MINGGU)": "11",
-            "NOMINAL TELAT": 22000,
-            "PROGRESS": "███████ 36%"
-        }, {
-            "NAMA ANGGOTA": "Edward Adventus Dembo",
-            "JABATAN": "Staf Muda Hublu",
-            "NIM": 103082400028.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp60.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "█████████████ 67%"
-        }, {
-            "NAMA ANGGOTA": "Enjina Disellyn",
-            "JABATAN": "Koor Bistech",
-            "NIM": 1201220014.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp90.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "████████████████████ 100%"
-        }, {
-            "NAMA ANGGOTA": "Euangelion Michael Didimus",
-            "JABATAN": "Anggota Ristek",
-            "NIM": 1201220029.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "Evi Fitriya",
-            "JABATAN": "Bendahara 1",
-            "NIM": 1201222005.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp68.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "███████████████ 76%"
-        }, {
-            "NAMA ANGGOTA": "Ezra Gilang Raharjo ",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201220440.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Farhan Nugraha Sasongko Putra",
-            "JABATAN": "Anggota Ristek",
-            "NIM": 1201220449.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "First Abdillah Mayrafsya Setyawan",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201230030.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "Geovan Deo Pratama",
-            "JABATAN": "Koor Hublu",
-            "NIM": 12012200450.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp36.000,00",
-            "TELAT (MINGGU)": "9",
-            "NOMINAL TELAT": 18000,
-            "PROGRESS": "████████ 40%"
-        }, {
-            "NAMA ANGGOTA": "Ilham Krisna Eka Saputra",
-            "JABATAN": "Staff Muda Sekertaris",
-            "NIM": 103082400032.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp50.000,00",
-            "TELAT (MINGGU)": "2",
-            "NOMINAL TELAT": 4000,
-            "PROGRESS": "███████████ 56%"
-        }, {
-            "NAMA ANGGOTA": "Kevin Tumanggor",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201220044.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp10.000,00",
-            "TELAT (MINGGU)": "22",
-            "NOMINAL TELAT": 44000,
-            "PROGRESS": "██ 11%"
-        }, {
-            "NAMA ANGGOTA": "Khalil Gilbran Sabilichaya",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": null,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "Khalilur Rahman An Nafi",
-            "JABATAN": "Staf Muda Ristek",
-            "NIM": 103082400033.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp50.000,00",
-            "TELAT (MINGGU)": "2",
-            "NOMINAL TELAT": 4000,
-            "PROGRESS": "███████████ 56%"
-        }, {
-            "NAMA ANGGOTA": "M Fadhil Ahnaf",
-            "JABATAN": "Staf Muda Hublu",
-            "NIM": 103082400012.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Maulana Muhammad Ashari",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201230009.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp16.000,00",
-            "TELAT (MINGGU)": "19",
-            "NOMINAL TELAT": 38000,
-            "PROGRESS": "████ 18%"
-        }, {
-            "NAMA ANGGOTA": "Mufid Nursirot Jati",
-            "JABATAN": "Bendahara 2",
-            "NIM": 1201230002.0,
-            "TAHUN": 2023,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp70.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "████████████████ 78%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad",
-            "JABATAN": "Anggota Psdm",
-            "NIM": 1201222041.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp44.000,00",
-            "TELAT (MINGGU)": "5",
-            "NOMINAL TELAT": 10000,
-            "PROGRESS": "██████████ 49%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Adib Firmansyah",
-            "JABATAN": "Koor PSDM",
-            "NIM": 1201220012.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp72.500,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "████████████████ 81%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Ageng Sasmito",
-            "JABATAN": "Anggota Psdm",
-            "NIM": 1201220001.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp90.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "████████████████████ 100%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Ayondi Ramadhan",
-            "JABATAN": "Staf Muda Ristek",
-            "NIM": 103082400011.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp19.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 21%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Ilham",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": 10308240015.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Khafidh Ainur Rasyidh",
-            "JABATAN": "Anggota Ristek",
-            "NIM": 1201230043.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Naufal Ghufran",
-            "JABATAN": "Staf Muda Medikraf",
-            "NIM": 103082400049.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Rizky Febrianto",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201230037.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp78.000,00",
-            "TELAT (MINGGU)": "AMAN",
-            "NOMINAL TELAT": 0,
-            "PROGRESS": "█████████████████ 87%"
-        }, {
-            "NAMA ANGGOTA": "Muhammad Rizky Ramadhan",
-            "JABATAN": "Staf Muda Hublu",
-            "NIM": 103082400014.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp42.000,00",
-            "TELAT (MINGGU)": "6",
-            "NOMINAL TELAT": 12000,
-            "PROGRESS": "█████████ 47%"
-        }, {
-            "NAMA ANGGOTA": "Nur Cahyani Astika Fauzi",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201220043.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Nur Muhammad Wahyu Dewata",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201230013.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "Radinka Putra Rahardian",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201220020.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp14.000,00",
-            "TELAT (MINGGU)": "20",
-            "NOMINAL TELAT": 40000,
-            "PROGRESS": "███ 16%"
-        }, {
-            "NAMA ANGGOTA": "Raditya Prasna Putra Dharmawan",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": 103082400027.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp41.000,00",
-            "TELAT (MINGGU)": "6",
-            "NOMINAL TELAT": 12000,
-            "PROGRESS": "█████████ 46%"
-        }, {
-            "NAMA ANGGOTA": "Rafid Damar Pratama",
-            "JABATAN": "Anggota Ristek",
-            "NIM": 1201230026.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Rahmat Eka Saputra",
-            "JABATAN": "Koor Medikraf",
-            "NIM": 120122047.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp46.000,00",
-            "TELAT (MINGGU)": "4",
-            "NOMINAL TELAT": 8000,
-            "PROGRESS": "██████████ 51%"
-        }, {
-            "NAMA ANGGOTA": "Raihan Siyun",
-            "JABATAN": "Koor Ristek",
-            "NIM": 1201220011.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Rakha Bramantyo S",
-            "JABATAN": "Staf Muda Medikraf",
-            "NIM": 103082400010.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp11.000,00",
-            "TELAT (MINGGU)": "21",
-            "NOMINAL TELAT": 42000,
-            "PROGRESS": "██ 12%"
-        }, {
-            "NAMA ANGGOTA": "Randy Deniz Manzarasi",
-            "JABATAN": "Wakil Koor PSDM",
-            "NIM": 1201220445.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp38.000,00",
-            "TELAT (MINGGU)": "8",
-            "NOMINAL TELAT": 16000,
-            "PROGRESS": "████████ 42%"
-        }, {
-            "NAMA ANGGOTA": "Rifqi Reissal Arasy",
-            "JABATAN": "Wakil Koor Hublu",
-            "NIM": 1201230038.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Ryan Adika Wicaksana",
-            "JABATAN": "Anggota Psdm",
-            "NIM": 1201230016.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Septian Nanda Saputra",
-            "JABATAN": "Anggota Ristek",
-            "NIM": 1201220007.0,
-            "TAHUN": 2022,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp0,00",
-            "TELAT (MINGGU)": "27",
-            "NOMINAL TELAT": 54000,
-            "PROGRESS": " 0%"
-        }, {
-            "NAMA ANGGOTA": "Shim Hyen Jin",
-            "JABATAN": "Anggota Bistech",
-            "NIM": 1201220442.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Siti Nafiatul Fauziah",
-            "JABATAN": "Wakil Koor Medikraf",
-            "NIM": 1201230017.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Siti Nur Faizah",
-            "JABATAN": "Wakil Koor Ristek",
-            "NIM": 1201230008.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Terrafel Agung Safitri",
-            "JABATAN": "Anggota Hublu",
-            "NIM": 1201230007.0,
-            "TAHUN": 2023,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }, {
-            "NAMA ANGGOTA": "Tora Sultan Rabbani",
-            "JABATAN": "Staf Muda Psdm",
-            "NIM": 103082400019.0,
-            "TAHUN": 2024,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp28.000,00",
-            "TELAT (MINGGU)": "13",
-            "NOMINAL TELAT": 26000,
-            "PROGRESS": "██████ 31%"
-        }, {
-            "NAMA ANGGOTA": "Veryandra Putra Peztaria",
-            "JABATAN": "Anggota Ristek",
-            "NIM": null,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp20.000,00",
-            "TELAT (MINGGU)": "17",
-            "NOMINAL TELAT": 34000,
-            "PROGRESS": "████ 22%"
-        }, {
-            "NAMA ANGGOTA": "Wahyoe Ilham Ramadhani",
-            "JABATAN": "Anggota Psdm",
-            "NIM": 1201230034.0,
-            "TAHUN": 2023,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp34.000,00",
-            "TELAT (MINGGU)": "10",
-            "NOMINAL TELAT": 20000,
-            "PROGRESS": "████████ 38%"
-        }, {
-            "NAMA ANGGOTA": "Yemima Alda Puturuhu",
-            "JABATAN": "Anggota Medikraf",
-            "NIM": 1201220024.0,
-            "TAHUN": 2022,
-            "PIC": "MUFID",
-            "PERNAH DIBAYAR": "Rp10.000,00",
-            "TELAT (MINGGU)": "22",
-            "NOMINAL TELAT": 44000,
-            "PROGRESS": "██ 11%"
-        }, {
-            "NAMA ANGGOTA": "Yesha Putri Ayu Wandhira",
-            "JABATAN": "Wakil Ketua ",
-            "NIM": 1201229001.0,
-            "TAHUN": 2022,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp38.000,00",
-            "TELAT (MINGGU)": "8",
-            "NOMINAL TELAT": 16000,
-            "PROGRESS": "████████ 42%"
-        }, {
-            "NAMA ANGGOTA": "Yosep Warih Martua Manik",
-            "JABATAN": "Staf Muda Ristek",
-            "NIM": 103082400017.0,
-            "TAHUN": 2024,
-            "PIC": "ALIF",
-            "PERNAH DIBAYAR": "Rp50.000,00",
-            "TELAT (MINGGU)": "2",
-            "NOMINAL TELAT": 4000,
-            "PROGRESS": "███████████ 56%"
-        }, {
-            "NAMA ANGGOTA": "Muhamad Rozi",
-            "JABATAN": "Staf Muda Bistech",
-            "NIM": 103082400040.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp30.000,00",
-            "TELAT (MINGGU)": "12",
-            "NOMINAL TELAT": 24000,
-            "PROGRESS": "███████ 33%"
-        }, {
-            "NAMA ANGGOTA": "Miratun Nisa'",
-            "JABATAN": "Staf Muda Bistech",
-            "NIM": 103082400001.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp18.000,00",
-            "TELAT (MINGGU)": "18",
-            "NOMINAL TELAT": 36000,
-            "PROGRESS": "████ 20%"
-        }, {
-            "NAMA ANGGOTA": "Debby Kristina Tampubolon",
-            "JABATAN": "Staf Muda Bistech",
-            "NIM": 103082400029.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp10.000,00",
-            "TELAT (MINGGU)": "22",
-            "NOMINAL TELAT": 44000,
-            "PROGRESS": "██ 11%"
-        }, {
-            "NAMA ANGGOTA": "Ivan Ramadhani Alfirdaus",
-            "JABATAN": "Staf Muda Bistech",
-            "NIM": 103082400006.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp28.000,00",
-            "TELAT (MINGGU)": "13",
-            "NOMINAL TELAT": 26000,
-            "PROGRESS": "██████ 31%"
-        }, {
-            "NAMA ANGGOTA": "Pradipta Firdaus Eka Nugraha",
-            "JABATAN": "Staf Muda Bistech",
-            "NIM": 103082400044.0,
-            "TAHUN": 2024,
-            "PIC": "EVI",
-            "PERNAH DIBAYAR": "Rp40.000,00",
-            "TELAT (MINGGU)": "7",
-            "NOMINAL TELAT": 14000,
-            "PROGRESS": "█████████ 44%"
-        }];
+        const data = [['Nur Muhammad Wahyu Dewata','Hublu - Anggota','1201230013','2023','ALIF','Rp0,00','Rp62.000,00','31','0'],['First Abdillah Mayrafsya Setyawan','Medikraf - Anggota','1201230030','2023','MUFID','Rp0,00','Rp62.000,00','31','0'],['Farhan Nugraha Sasongko Putra','Ristek - Anggota','1201220449','2022','ALIF','Rp0,00','Rp62.000,00','31','0'],['Septian Nanda Saputra','Ristek - Anggota','1201220007','2022','ALIF','Rp0,00','Rp62.000,00','31','0'],['Khalil Gilbran Sabilichaya','Psdm - Staf Muda','0','2024','MUFID','Rp0,00','Rp62.000,00','31','0'],['Muhammad Ilham','Psdm - Staf Muda','10308240015','2024','MUFID','Rp0,00','Rp62.000,00','31','0'],['Miratun Nisa','Bistech - Staf Muda','103082400001','2024','EVI','Rp0,00','Rp62.000,00','31','0'],['Abdul Hakim Al Baihaqy','Hublu - Anggota','1201230031','2023','ALIF','Rp10.000,00','Rp52.000,00','26','0'],['Kevin Tumanggor','Medikraf - Anggota','1201220044','2022','MUFID','Rp10.000,00','Rp52.000,00','26','0'],['Yemima Alda Puturuhu','Medikraf - Anggota','1201220024','2022','MUFID','Rp10.000,00','Rp52.000,00','26','0'],['Ahmad Ivan Sahmura Soni','Psdm - Wakil Koor','1201230018','2023','MUFID','Rp10.000,00','Rp52.000,00','26','0'],['Adelia Nafiatul Farida','Sekretaris 1','1201220025','2022','EVI','Rp10.000,00','Rp52.000,00','26','0'],['Debby Kristina Tampubolon','Bistech - Staf Muda','103082400029','2024','EVI','Rp10.000,00','Rp52.000,00','26','0'],['Rakha Bramantyo S','Medikraf - Staf Muda','103082400010','2024','MUFID','Rp11.000,00','Rp51.000,00','26','0'],['Radinka Putra Rahardian','Hublu - Anggota','1201220020','2022','ALIF','Rp14.000,00','Rp48.000,00','24','0'],['Maulana Muhammad Ashari','Medikraf - Anggota','1201230009','2023','MUFID','Rp16.000,00','Rp46.000,00','23','0'],['Alif Gayuh Arimukti','Bistech - Anggota','1201220017','2022','EVI','Rp20.000,00','Rp42.000,00','21','0'],['Muhammad Naufal Ghufran','Medikraf - Staf Muda','103082400049','2024','MUFID','Rp20.000,00','Rp42.000,00','21','0'],['David Wahyu Herdyansyah','Bistech - Anggota','1201230011','2023','EVI','Rp24.000,00','Rp38.000,00','19','0'],['Dimas Iqbal Rizqulloh','Medikraf - Anggota','1201230028','2023','MUFID','Rp24.000,00','Rp38.000,00','19','0'],['Ahmad Firnanda Setiawan','Bistech - Wakil Koor','1201230001','2023','EVI','Rp28.000,00','Rp34.000,00','17','0'],['Dita Ramadhani Tianto','Sekretaris 2','1201230040','2023','EVI','Rp28.000,00','Rp34.000,00','17','0'],['Tora Sultan Rabbani','Psdm - Staf Muda','103082400019','2024','MUFID','Rp28.000,00','Rp34.000,00','17','0'],['Ivan Ramadhani AlFirdaus','Bistech - Staf Muda','103082400006','2024','EVI','Rp28.000,00','Rp34.000,00','17','0'],['Alvian Novi Ramadhani','Bistech - Anggota','1201230032','2023','EVI','Rp30.000,00','Rp32.000,00','16','0'],['Shim Hyen Jin','Bistech - Anggota','1201220442','2022','EVI','Rp30.000,00','Rp32.000,00','16','0'],['Dandy Maulana Ainul Yaqin','Hublu - Anggota','1201222032','2022','ALIF','Rp30.000,00','Rp32.000,00','16','0'],['Ezra Gilang Raharjo ','Medikraf - Anggota','1201220440','2022','MUFID','Rp30.000,00','Rp32.000,00','16','0'],['DEVAN GANICIA SYAH PRATAMA','Psdm - Anggota','1201222009','2022','MUFID','Rp30.000,00','Rp32.000,00','16','0'],['Rafid Damar Pratama','Ristek - Anggota','1201230026','2023','ALIF','Rp30.000,00','Rp32.000,00','16','0'],['M Fadhil Ahnaf','Hublu - Staf Muda','103082400012','2024','ALIF','Rp30.000,00','Rp32.000,00','16','0'],['Adyadma Renjiro','Medikraf - Staf Muda','103082400013','2024','MUFID','Rp30.000,00','Rp32.000,00','16','0'],['Amelia Amanda','Psdm - Staf Muda','103082400039','2024','MUFID','Rp30.000,00','Rp32.000,00','16','0'],['Dinda Maya Aprilia','Bistech - Anggota','1201220441','2022','EVI','Rp30.000,00','Rp32.000,00','16','0'],['Rifqi Reissal Arasy','Hublu - Wakil Koor','1201230038','2023','ALIF','Rp30.000,00','Rp32.000,00','16','0'],['Muhamad Rozi','Bistech - Staf Muda','103082400040','2024','EVI','Rp30.000,00','Rp32.000,00','16','0'],['E A Yoga Wilanda','Ristek - Anggota','0','2022','ALIF','Rp32.000,00','Rp30.000,00','15','0'],['Raihan Siyun','Ristek - Koor','1201220011','2022','ALIF','Rp32.000,00','Rp30.000,00','15','0'],['Wahyoe Ilham Ramadhani','Psdm - Anggota','1201230034','2023','MUFID','Rp34.000,00','Rp28.000,00','14','0'],['Daffa Surya Ramadhan','Hublu - Staf Muda','103082400047','2024','ALIF','Rp34.000,00','Rp28.000,00','14','0'],['Yesha Putri Ayu Wandhira','Wakil Ketua','1201229001','2022','EVI','Rp38.000,00','Rp24.000,00','12','0'],['Randy Deniz Manzarasi','Psdm - Anggota','1201220445','2022','MUFID','Rp38.000,00','Rp24.000,00','12','0'],['Awan dhani wahono','Hublu - Anggota','1201220443','2022','ALIF','Rp40.000,00','Rp22.000,00','11','0'],['Nur Cahyani Astika Fauzi','Medikraf - Anggota','1201220043','2022','MUFID','Rp40.000,00','Rp22.000,00','11','0'],['Aurel Adestira Salsabila','Psdm - Staf Muda','103082400041','2024','MUFID','Rp40.000,00','Rp22.000,00','11','0'],['Siti Nur Faizah','Ristek - Wakil Koor','1201230008','2023','ALIF','Rp40.000,00','Rp22.000,00','11','0'],['Muhammad Rizky Ramadhan','Hublu - Staf Muda','103082400014','2024','ALIF','Rp42.000,00','Rp20.000,00','10','- telat dikurangi 4 minggu sudah mengikuti upacara 17'],['Muhammad','Psdm - Anggota','1201222041','2022','MUFID','Rp44.000,00','Rp18.000,00','9','0'],['Khalilur Rahman An Nafi','Ristek - Staf Muda','103082400033','2024','ALIF','Rp50.000,00','Rp12.000,00','6','0'],['Ilham Krisna Eka Saputra','Sekertaris - Staf Muda','103082400032','2024','EVI','Rp50.000,00','Rp12.000,00','6','0'],['Ryan Adika Wicaksana','Psdm - Anggota','1201230016','2023','MUFID','Rp54.000,00','Rp8.000,00','4','0'],['Euangelion Michael Didimus','Ristek - Anggota','1201220029','2022','ALIF','Rp54.000,00','Rp8.000,00','4','0'],['Deo Farady Santoso','Medikraf - Anggota','120122047','2022','MUFID','Rp56.000,00','Rp6.000,00','3','0'],['ARIANA HECHALINA ARDIANSYAH','Ristek - Anggota','1201230042','2023','ALIF','Rp60.000,00','Rp2.000,00','1','0'],['Edward Adventus Dembo','Hublu - Staf Muda','103082400028','2024','ALIF','Rp60.000,00','Rp2.000,00','1','0'],['Andriy Novan Rahman','Hublu - Anggota','1201220015','2022','ALIF','Rp64.000,00','0','AMAN','0'],['Terrafel Agung Safitri','Hublu - Anggota','1201230007','2023','ALIF','Rp64.000,00','0','AMAN','0'],['Muhammad Rizky Febrianto','Hublu - Anggota','1201230037','2023','ALIF','Rp78.000,00','0','AMAN','- telat dikurangi 4 minggu sudah mengikuti upacara 17'],['MUHAMMAD AGENG SASMITO','Psdm - Anggota','1201220001','2022','MUFID','Rp90.000,00','0','AMAN','0'],['Muhammad Khafidh Ainur Rasyidh','Ristek - Anggota','1201230043','2023','ALIF','Rp64.000,00','0','AMAN','0'],['Veryandra Putra Peztaria','Ristek - Anggota','0','2024','ALIF','Rp64.000,00','0','AMAN','0'],['Evi Fitriya','Bendahara 1','1201222005','2022','EVI','Rp68.000,00','0','AMAN','0'],['Mufid Nursirot Jati','Bendahara 2','1201230002','2023','EVI','Rp70.000,00','0','AMAN','0'],['Dito Aditya Nugroho','Ketua','1201220037','2022','EVI','Rp90.000,00','0','AMAN','0'],['Enjina Disellyn','Bistech - Koor','1201220014','2022','EVI','Rp90.000,00','0','AMAN','0'],['Geovan Deo Pratama','Hublu - Koor','12012200450','2022','ALIF','Rp64.000,00','0','AMAN','0'],['Rahmat Eka Saputra','Medikraf - Koor','120122047','2022','MUFID','Rp64.000,00','0','AMAN','0'],['Muhammad Adib Firmansyah','Psdm - Koor','1201220012','2022','MUFID','Rp72.500,00','0','AMAN','0'],['Alif Akbar Ramadhan','Bendahara - Staf Muda','103082400035','2024','EVI','Rp80.000,00','0','AMAN','0'],['Raditya Prasna Putra Dharmawan','Psdm - Staf Muda','103082400027','2024','MUFID','Rp63.000,00','0','AMAN','0'],['Dimas Dewa Ndaru Putra Widodo','Psdm - Staf Muda','103082400038','2024','MUFID','Rp64.000,00','0','AMAN','0'],['Dynasty Danna Gunawan','Ristek - Staf Muda','103082400037','2024','ALIF','Rp62.000,00','0','AMAN','0'],['Muhammad Ayondi Ramadhan','Ristek - Staf Muda','103082400011','2024','ALIF','Rp63.000,00','0','AMAN','0'],['Yosep Warih Martua Manik','Ristek - Staf Muda','103082400017','2024','ALIF','Rp64.000,00','0','AMAN','0'],['Siti Nafiatul Fauziah','Medikraf - Wakil Koor','1201230017','2023','MUFID','Rp64.000,00','0','AMAN','0'],['Pradipta Firdaus Eka Nugraha','Bistech - Staf Muda','103082400044','2024','EVI','Rp64.000,00','0','AMAN','0']];
 
         const tbody = document.querySelector("#dataTable tbody");
         const searchInput = document.getElementById("searchInput");
@@ -1148,22 +390,31 @@
         function renderTable(filteredData) {
             tbody.innerHTML = "";
             filteredData.forEach((item, idx) => {
-                let juli = item["NOMINAL TELAT"] !== 0 ? item["NOMINAL TELAT"] : 0;
-                let agustus = item["NOMINAL TELAT"] !== 0 ? (item["NOMINAL TELAT"] + 10000) : 0;
                 const tr = document.createElement("tr");
+                let value = item[7];
+                let max = 31; //set ini
+                let intensity = Math.min(value / max, 1);
+                let r = 255;
+                let g = Math.round(255 - (255 - 182) * intensity);
+                let b = Math.round(255 - (255 - 193) * intensity);
+
+                let bgColor = `rgb(${r}, ${g}, ${b})`;
+                tr.style.backgroundColor = bgColor;
                 tr.setAttribute("data-pic", (item["PIC"] || "").toLowerCase());
+                if(item[8]!='0'){
+                    tr.setAttribute("data-bs-toggle", "tooltip");
+                    tr.setAttribute("data-bs-placement", "top");
+                    tr.setAttribute("title", item[8]);
+                }
                 tr.innerHTML = `
-                <td>${item["NAMA ANGGOTA"]}</td>
-                <td>${item["JABATAN"]}</td>
-                <td>${item["NIM"] || '-'}</td>
-                <td>${item["TAHUN"]}</td>
-                <td>${item["PIC"]}</td>
-                <td>${item["PERNAH DIBAYAR"]}</td>
-                <td>${item["PROGRESS"]}</td>
-                <td>${item["TELAT (MINGGU)"]}</td>
-                <td>Rp${(item["NOMINAL TELAT"]||0).toLocaleString('id-ID')}</td>
-                <td>Rp${(juli).toLocaleString('id-ID')}</td>
-                <td>Rp${(agustus).toLocaleString('id-ID')}</td>
+                <td>${item[0]}</td>
+                <td>${item[1]}</td>
+                <td>${item[2]}</td>
+                <td>${item[3]}</td>
+                <td>${item[4]}</td>
+                <td>${item[5]}</td>
+                <td>${item[6]}</td>
+                <td>${item[7]}</td>
             `;
                 tr.onclick = function() {
                     showRekening(item["PIC"]);
@@ -1175,7 +426,7 @@
         searchInput.addEventListener("input", () => {
             const keyword = searchInput.value.toLowerCase();
             const filtered = data.filter(item =>
-                item["NAMA ANGGOTA"].toLowerCase().includes(keyword)
+                item[0].toLowerCase().includes(keyword)
             );
             renderTable(filtered);
         });
