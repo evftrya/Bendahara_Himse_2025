@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pemberitahuan Pembayaran Kas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            background: #fff;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(80, 100, 120, 0.07);
+            padding: 32px 24px 40px 24px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #3b3f5c;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .info,
+        .note,
+        .steps,
+        .desc {
+            margin-bottom: 20px;
+        }
+        
+        .info {
+            background: #eaf6ff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            color: #21466c;
+            font-size: 1.07rem;
+        }
+        
+        .agenda {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: 14px 0 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        .agenda span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .desc {
+            line-height: 1.6;
+            color: #454f5b;
+        }
+        
+        .note {
+            background: #fffde4;
+            border-left: 5px solid #f6b100;
+            padding: 12px 20px;
+            border-radius: 7px;
+            color: #6e5601;
+            font-size: 1rem;
+        }
+        
+        .steps {
+            background: #f0f9f5;
+            border-left: 5px solid #4cb050;
+            padding: 14px 18px;
+            border-radius: 8px;
+            color: #234228;
+            font-size: 1rem;
+        }
+        
+        ol {
+            margin: 0 0 0 14px;
+            padding: 0;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin-top: 24px;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #b9c5d8;
+            border-radius: 7px;
+            box-sizing: border-box;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #fafbfc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th,
+        td {
+            border: 1px solid #dbe3ec;
+            padding: 8px 6px;
+            font-size: 14px;
+            text-align: left;
+        }
+        
+        th {
+            background: #dde9f7;
+            color: #22344c;
+            font-weight: 600;
+        }
+        
+        tr.hide {
+            display: none;
+        }
+        
+        tr[data-pic] {
+            transition: background 0.15s;
+        }
+        
+        tr:hover td {
+            background: #e5f4e3 !important;
+            cursor: pointer;
+        }
+        
+        .rekening-section {
+            border-radius: 14px;
+            margin-top: 32px;
+            margin-bottom: 26px;
+            padding: 22px 22px 14px 22px;
+            background: #eaf4ec;
+            border-left: 7px solid #6abf69;
+            position: relative;
+            transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+            box-shadow: 0 2px 18px rgba(100, 180, 100, 0.08);
+            display: none;
+        }
+        
+        .rekening-section.show {
+            display: block;
+            animation: fadeInShow 0.35s;
+        }
+        
+        @keyframes fadeInShow {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .rekening-section.highlight {
+            background: #fff6e3 !important;
+            border-left: 7px solid #ffb94a !important;
+            box-shadow: 0 2px 16px #ffc76045;
+            animation: highlightFade 2.3s forwards;
+        }
+        
+        @keyframes highlightFade {
+            0% {
+                background: #ffe0b2;
+                border-left-color: #ffb94a;
+            }
+            85% {
+                background: #fff6e3;
+                border-left-color: #ffb94a;
+            }
+            100% {
+                background: #eaf4ec;
+                border-left-color: #6abf69;
+            }
+        }
+        
+        .rekening-section h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.25rem;
+            color: #41782e;
+        }
+        
+        .rekening-list {
+            margin: 10px 0 6px 0;
+            font-size: 1.07rem;
+            color: #333;
+        }
+        
+        .rekening-list li {
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        
+        .rekening-pic {
+            color: #246a41;
+            font-weight: bold;
+        }
+        
+        .wa-btn {
+            display: inline-block;
+            margin-top: 8px;
+            background: #25d366;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 9px 16px 9px 38px;
+            font-size: 1.08rem;
+            box-shadow: 0 2px 8px #14b24526;
+            text-decoration: none;
+            position: relative;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        
+        .wa-btn:hover {
+            background: #20ba59;
+            box-shadow: 0 4px 14px #14b24535;
+        }
+        
+        .wa-btn:before {
+            content: "";
+            background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center/contain;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 14px 2vw 22px 2vw;
+            }
+            th,
+            td {
+                font-size: 13px;
+                padding: 7px 4px;
+            }
+            .rekening-section {
+                padding: 12px 5vw 12px 5vw;
+            }
+            .wa-btn {
+                font-size: 1rem;
+                padding-left: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Pemberitahuan Pembayaran Kas</h2>
+        <!-- <div class="info">
+            <div>
+                Sehubungan dengan rapat pada:
+            </div>
+            <div class="agenda">
+                <span>🗓 <b>Jum’at, 25 Juli 2025</b></span>
+                <span>🕡 <b>Pukul 18.30 WIB</b></span>
+                <span>📍 <b>Via Zoom/Teams</b></span>
+            </div>
+            <div>
+                Akan diadakan rapat membahas monthly progress serta pembentukan kepanitiaan untuk beberapa program kerja (proker) baru.
+            </div>
+        </div>
+
+        <div class="desc">
+            Kami informasikan bahwa proses pembentukan kepanitiaan akan mempertimbangkan status pembayaran kas, terutama <strong>bagi yang masih memiliki tunggakan</strong>. Mekanisme pemilihan juga dapat menggunakan sistem <b>spin wheel</b>.
+            <br><br> Bagi rekan-rekan yang namanya tercatat telat membayar kas, kami membuka kesempatan untuk segera melakukan pelunasan. Data keterlambatan pembayaran kas sudah dicatat sebelumnya dan dapat dilihat pada tabel di bawah.
+        </div> -->
+
+        <!-- <div class="note">
+            <b>Catatan:</b>
+            <br>Bagi yang keterlambatannya lebih dari 4 minggu, <br> Hanya dan jika hanya kasnya yang dibayar sampai akhir Juli, maka keterlambatan akan dianggap 0 (nol). kesempatan ini hanya ada hingga Jumat 25 Juli 2025, jam 3 sore, setelah itu maka
+            terlambat yg tertera akan tetap dihitung
+        </div> -->
+
+        <div class="steps">
+            <b>Cara Pembayaran:</b>
+            <ol>
+                <li>Cari nama Anda pada tabel </li>
+                <li>Klik baris nama Anda</li>
+                <li>Section rekening pembayaran akan muncul sesuai PIC Anda</li>
+                <li>Setelah melakukan transfer, konfirmasi pembayaran ke WhatsApp PIC melalui tombol di bawah rekening.</li>
+            </ol>
+        </div>
+
+        <!-- <div class="desc">
+            Mohon kerjasamanya agar proses rapat dan pembentukan kepanitiaan dapat berjalan lancar dan adil untuk semua.<br>
+            <b>Terima kasih!</b>
+        </div> -->
+
+        <div class="note">
+            <b>Catatan:</b>
+            <br>
+            <p>- Data ini terupdate per <span id="update_tgl">21/8/2025 4.09</span>, apabila setelah dilakukan pembayaran nama anda masih ada tenang saja ini hanya data static, yang terupdate ada di PIC masing-masing</p>
+        </div>
+
+        <a href="/qris.html">QRIS</a>
+
+        <div class="table-container">
+            <input type="text" id="searchInput" placeholder="Cari nama anggota... (contoh: fitri)">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Nominal Telat</th>
+                        <th>Telat (Minggu)</th>
+                        <th>Jabatan</th>
+                        <th>NIM</th>
+                        <!-- <th>Tahun</th> -->
+                        <th>TAHUN</th>
+                        <th>PIC</th>
+                        <th>Pernah Dibayar</th>
+                        <!-- <th>Jika bayar hingga akhir bulan Juli</th> -->
+                        <!-- <th>Jika bayar hingga akhir bulan Agustus</th> -->
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
+        </div>
+
+        <div style="margin-top:18px;">
+            <div id="rekening-evi" class="rekening-section">
+                <h3>🔧 BPH & Bistech <span class="rekening-pic">(PIC: Evi)</span></h3>
+                <ul class="rekening-list">
+                    <li>QRIS:
+                        <iframe src="https://drive.google.com/file/d/1NkEDiOwyxUtsynxvewNBGbwujMAMWMh5/preview" width="640" height="480" allow="autoplay"></iframe>
+                    </li>
+                    <li>DANA: <b>0895327610080</b></li>
+
+                    <li>BCA: <b>1921215041</b> a.n <b>Evi Fitriya</b></li>
+                </ul>
+                <div style="margin-top:10px; color:#777; font-size:0.96rem;">
+                    Silahkan kirim bukti transfer beserta text dg format: Nama lengkap_Divisi
+                </div>
+                <a href="https://wa.me/+628972529100" class="wa-btn" target="_blank">Chat WhatsApp Evi</a>
+            </div>
+            <div id="rekening-mufid" class="rekening-section">
+                <h3>🧠 PSDM & Medikraft <span class="rekening-pic">(PIC: Mufid)</span></h3>
+                <ul class="rekening-list">
+                    <li>DANA: <b>081230389254</b></li>
+                    <li>BNI: <b>1816725843</b> a.n <b>Mufid Sarkas</b></li>
+                </ul>
+                <div style="margin-top:10px; color:#777; font-size:0.96rem;">
+                    Silahkan kirim bukti transfer beserta text dg format: Nama lengkap_Divisi
+                </div>
+                <a href="https://wa.me/+6281230389254" class="wa-btn" target="_blank">Chat WhatsApp Mufid</a>
+            </div>
+            <div id="rekening-alif" class="rekening-section">
+                <h3>🌐 Hublu & Ristek <span class="rekening-pic">(PIC: Alif)</span></h3>
+                <ul class="rekening-list">
+                    <li>BCA: <b>6225056891</b> a.n <b>Alif</b></li>
+
+                </ul>
+                <div style="margin-top:10px; color:#777; font-size:0.96rem;">
+                    Silahkan kirim bukti transfer beserta text dg format: Nama lengkap_Divisi
+                </div>
+                <a href="https://wa.me/+6285336113200" class="wa-btn" target="_blank">Chat WhatsApp Alif</a>
+            </div>
+        </div>
+        <div style="margin-top:10px; color:#777; font-size:0.96rem;">
+            Apabila ada data yg salah menurut anda, siapkan bukti untuk diaju banding, laporkan kepada pic terkait!
+        </div>
+    </div>
+    <script>
+        // Data contoh, silakan replace dengan data lengkap jika mau (lihat instruksi sebelumnya)
+        
+
+        const tbody = document.querySelector("#dataTable tbody");
+        const searchInput = document.getElementById("searchInput");
+
+        function renderTable(filteredData) {
+            tbody.innerHTML = "";
+            filteredData.forEach((item, idx) => {
+                const tr = document.createElement("tr");
+                let value = item[7];
+                let max = 31; //set ini
+                let intensity = Math.min(value / max, 1);
+                let r = 255;
+                let g = Math.round(255 - (255 - 182) * intensity);
+                let b = Math.round(255 - (255 - 193) * intensity);
+
+                let bgColor = `rgb(${r}, ${g}, ${b})`;
+                tr.style.backgroundColor = bgColor;
+                tr.setAttribute("data-pic", (item["PIC"] || "").toLowerCase());
+                if(item[8]!='0'){
+                    tr.setAttribute("data-bs-toggle", "tooltip");
+                    tr.setAttribute("data-bs-placement", "top");
+                    tr.setAttribute("title", item[8]);
+                }
+                tr.innerHTML = `
+                <td>${item[0]}</td>
+                <td>${item[6]}</td>
+                <td>${item[7]}</td>
+                <td>${item[1]}</td>
+                <td>${item[2]}</td>
+                <td>${item[3]}</td>
+                <td>${item[4]}</td>
+                <td>${item[5]}</td>
+            `;
+            if(item[7]!='AMAN'){
+                tr.onclick = function() {
+                    showRekening(item[4]);
+                }
+            }
+                tbody.appendChild(tr);
+            });
+        }
+
+        
+
+        function showRekening(pic) {
+            const ids = ['rekening-evi', 'rekening-mufid', 'rekening-alif'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.remove('highlight');
+                el.classList.remove('show');
+            });
+            let targetId = '';
+            if (!pic) return;
+            if (pic.toUpperCase() === 'EVI') targetId = 'rekening-evi';
+            else if (pic.toUpperCase() === 'MUFID') targetId = 'rekening-mufid';
+            else if (pic.toUpperCase() === 'ALIF') targetId = 'rekening-alif';
+            if (targetId) {
+                const el = document.getElementById(targetId);
+                el.classList.add('show');
+                el.classList.add('highlight');
+                el.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+                setTimeout(() => el.classList.remove('highlight'), 2600);
+            }
+        }
+
+        // Hide all rekening sections on first load
+        document.getElementById('rekening-evi').classList.remove('show');
+        document.getElementById('rekening-mufid').classList.remove('show');
+        document.getElementById('rekening-alif').classList.remove('show');
+
+        fetch("./data_kas_static/24112025_2_20.json")
+        .then(response => response.json())
+        .then(json => {
+            const master_data = json;
+            renderTable(master_data[1]);
+            document.querySelector('#update_tgl').textContent = master_data[0]
+
+            searchInput.addEventListener("input", () => {
+            const keyword = searchInput.value.toLowerCase();
+            const filtered = master_data[1].filter(item =>
+                item[0].toLowerCase().includes(keyword)
+            );
+            renderTable(filtered);
+        });
+        })
+        .catch(err => console.error("Error loading JSON:", err));
+
+        // Pertama kali render tabel
+    </script>
+</body>
+
+</html>
